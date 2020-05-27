@@ -6,30 +6,46 @@ using System.Net.Http;
 using System.Text;
 using System.Threading.Tasks;
 using Newtonsoft.Json;
+using Microsoft.Extensions.Configuration;
 
 namespace ApiClients.Clients
 {
     public class Google : IGoogleClient
     {
         private readonly HttpClient _httpClient;
-        public string BaseUrl { get; set; }
-        public string Key { get; set; }
-        public string CX { get; set; }
+        private readonly IConfiguration _configuration;
+        private string BaseUrl { get; set; }
+        private string Key { get; set; }
+        private string CX { get; set; }
 
-        public Google(HttpClient httpClient)
-        {
+        public Google(HttpClient httpClient, IConfiguration configuration)
+        {            
             _httpClient = httpClient;
-            Key = "AIzaSyB7n9vpBj0pF0t0XBc_QRFJ7rcGSXCk5Lc";
-            CX = "013337687656984343162:m1opahpzwmn";
-            BaseUrl = $"https://customsearch.googleapis.com/customsearch/v1?q=java&fields=queries(request(totalResults))&key={Key}&cx={CX}";
+            _configuration = configuration;
+            var clientConfigurationSection = configuration.GetSection("GoogleClient");
+
+            BaseUrl = clientConfigurationSection.GetSection("BaseUrl").Value.ToString();
+            Key = clientConfigurationSection.GetSection("Key").Value.ToString();
+            CX = clientConfigurationSection.GetSection("CX").Value.ToString();
         }
 
         public async Task<GoogleResponse> GetResults()
         {
-            var responsestring = await _httpClient.GetStringAsync(BaseUrl);
-            var response = await Task.Run(() => JsonConvert.DeserializeObject<GoogleResponse>(responsestring)); 
+            string url = BuildFullUrl();
+            var responseString = await _httpClient.GetStringAsync(url);
+            var response = await Task.Run(() => JsonConvert.DeserializeObject<GoogleResponse>(responseString)); 
 
             return response;
-        }       
+        } 
+        
+        private string BuildFullUrl()
+        {
+            var url = new StringBuilder(BaseUrl);
+            url.Append("&q=java");
+            url.Append($"&cx={CX}");
+            url.Append($"&key={Key}");
+
+            return url.ToString();
+        }
     }
 }
