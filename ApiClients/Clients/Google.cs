@@ -7,6 +7,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Newtonsoft.Json;
 using Microsoft.Extensions.Configuration;
+using Microsoft.AspNetCore.WebUtilities;
 
 namespace ApiClients.Clients
 {
@@ -31,8 +32,8 @@ namespace ApiClients.Clients
 
         public async Task<List<GoogleResponse>> GetResults(List<string> queries)
         {
-            List<GoogleResponse> responses = new List<GoogleResponse>();
-            foreach(string query in queries)
+            List<GoogleResponse> responses = new List<GoogleResponse>();            
+            foreach (string query in queries)
             {
                 string url = BuildFullUrl(query);
                 var responseString = await _httpClient.GetStringAsync(url);
@@ -45,12 +46,12 @@ namespace ApiClients.Clients
         
         private string BuildFullUrl(string query)
         {
-            var url = new StringBuilder(BaseUrl);
-            url.Append($"&q={query}");
-            url.Append($"&cx={CX}");
-            url.Append($"&key={Key}");
+            var queryParameters = new Dictionary<string, string>();
+            queryParameters.Add("cx", CX);
+            queryParameters.Add("key", Key);
+            queryParameters.Add("q", query);
 
-            return url.ToString();
+            return QueryHelpers.AddQueryString(BaseUrl, queryParameters);
         }
     }
 }

@@ -18,7 +18,7 @@ namespace SearchFightWeb.Controllers
 
         public async Task<IActionResult> Index()
         {
-            _queryService.SearchQueries = new List<string>() { "php", "java" };
+            _queryService.SearchQueries = new List<string>() { "php", "java 8 help" };
             var temp = await _queryService.PerformGoogleSearch();
 
             return View();
