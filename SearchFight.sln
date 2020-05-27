@@ -3,8 +3,6 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.28803.352
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SearchFight", "SearchFight\SearchFight.csproj", "{F47F7E48-CC3B-4B22-AD83-BB82BA19FADF}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ApiClients", "ApiClients\ApiClients.csproj", "{B963CA8A-87F2-4EEC-8694-636CE208AACB}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Models", "Models\Models.csproj", "{46F0AA15-C1D4-42A6-8A1A-4921E7B12A7D}"
@@ -13,16 +11,14 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ModelBuilder", "ModelBuilde
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Services", "Services\Services.csproj", "{CBA6A40E-905A-4BDE-AFD2-7A2053865AFA}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SearchFightWeb", "SearchFightWeb\SearchFightWeb.csproj", "{7FDAB49E-D819-4574-BA57-168FD36E65E5}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{F47F7E48-CC3B-4B22-AD83-BB82BA19FADF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{F47F7E48-CC3B-4B22-AD83-BB82BA19FADF}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{F47F7E48-CC3B-4B22-AD83-BB82BA19FADF}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{F47F7E48-CC3B-4B22-AD83-BB82BA19FADF}.Release|Any CPU.Build.0 = Release|Any CPU
 		{B963CA8A-87F2-4EEC-8694-636CE208AACB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{B963CA8A-87F2-4EEC-8694-636CE208AACB}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{B963CA8A-87F2-4EEC-8694-636CE208AACB}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -39,6 +35,10 @@ Global
 		{CBA6A40E-905A-4BDE-AFD2-7A2053865AFA}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{CBA6A40E-905A-4BDE-AFD2-7A2053865AFA}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{CBA6A40E-905A-4BDE-AFD2-7A2053865AFA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7FDAB49E-D819-4574-BA57-168FD36E65E5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7FDAB49E-D819-4574-BA57-168FD36E65E5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7FDAB49E-D819-4574-BA57-168FD36E65E5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7FDAB49E-D819-4574-BA57-168FD36E65E5}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
