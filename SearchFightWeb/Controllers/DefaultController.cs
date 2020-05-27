@@ -1,5 +1,6 @@
 ﻿using ApiClients.Interfaces;
 using Microsoft.AspNetCore.Mvc;
+using Services.Interfaces;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,16 +10,16 @@ namespace SearchFightWeb.Controllers
 {
     public class DefaultController : Controller
     {
-        private IGoogleClient _googleClient;
-        public DefaultController(IGoogleClient googleClient)
+        private ISearchService _queryService;
+        public DefaultController(ISearchService queryService)
         {
-            _googleClient = googleClient;
+            _queryService = queryService;
         }
 
         public async Task<IActionResult> Index()
         {
-            var results = await _googleClient.GetResults();
-            ViewBag.Results = results.Queries.Request.First().TotalResults;
+            _queryService.SearchQueries = new List<string>() { "php", "java" };
+            var temp = await _queryService.PerformGoogleSearch();
 
             return View();
         }

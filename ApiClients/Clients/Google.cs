@@ -29,19 +29,24 @@ namespace ApiClients.Clients
             CX = clientConfigurationSection.GetSection("CX").Value.ToString();
         }
 
-        public async Task<GoogleResponse> GetResults()
+        public async Task<List<GoogleResponse>> GetResults(List<string> queries)
         {
-            string url = BuildFullUrl();
-            var responseString = await _httpClient.GetStringAsync(url);
-            var response = await Task.Run(() => JsonConvert.DeserializeObject<GoogleResponse>(responseString)); 
+            List<GoogleResponse> responses = new List<GoogleResponse>();
+            foreach(string query in queries)
+            {
+                string url = BuildFullUrl(query);
+                var responseString = await _httpClient.GetStringAsync(url);
+                var response = await Task.Run(() => JsonConvert.DeserializeObject<GoogleResponse>(responseString));
+                responses.Add(response);
+            }  
 
-            return response;
+            return responses;
         } 
         
-        private string BuildFullUrl()
+        private string BuildFullUrl(string query)
         {
             var url = new StringBuilder(BaseUrl);
-            url.Append("&q=java");
+            url.Append($"&q={query}");
             url.Append($"&cx={CX}");
             url.Append($"&key={Key}");
 

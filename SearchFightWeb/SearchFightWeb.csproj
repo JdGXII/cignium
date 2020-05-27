@@ -6,6 +6,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\ApiClients\ApiClients.csproj" />
+    <ProjectReference Include="..\Services\Services.csproj" />
   </ItemGroup>
 
 </Project>

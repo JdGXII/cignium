@@ -9,6 +9,8 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using Services.Interfaces;
+using Services.Services;
 
 namespace SearchFightWeb
 {
@@ -19,6 +21,7 @@ namespace SearchFightWeb
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddHttpClient<IGoogleClient, Google>();
+            services.AddTransient<ISearchService, SearchService>();
             services.AddMvc();
         }
 
