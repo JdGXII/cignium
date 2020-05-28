@@ -7,6 +7,6 @@ namespace Models.Output
     public class QueryResult
     {
         public string SearchTerm { get; set; }
-        public int TotalResults { get; set; }        
+        public ulong TotalResults { get; set; }        
     }
 }

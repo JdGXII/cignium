@@ -21,6 +21,7 @@ namespace SearchFightWeb
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddHttpClient<IGoogleClient, Google>();
+            services.AddHttpClient<IBingClient, Bing>();
             services.AddTransient<ISearchService, SearchService>();
             services.AddMvc();
         }

@@ -14,7 +14,7 @@ namespace Models.Responses
 
     public class TotalResultsResponse
     {
-        public int TotalResults { get; set; }
+        public ulong TotalResults { get; set; }
         public string SearchTerms { get; set; }
     }
 

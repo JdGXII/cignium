@@ -8,5 +8,6 @@ namespace Services.Interfaces
     {
         List<string> SearchQueries { get; set; }
         Task<List<QueryResult>> PerformGoogleSearch();
+        Task<List<QueryResult>> PerformBingSearch();
     }
 }

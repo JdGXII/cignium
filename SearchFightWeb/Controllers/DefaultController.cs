@@ -1,10 +1,7 @@
-﻿using ApiClients.Interfaces;
-using ErrorHandling.Exceptions;
+﻿using ErrorHandling.Exceptions;
 using Microsoft.AspNetCore.Mvc;
 using Services.Interfaces;
-using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Threading.Tasks;
 
 namespace SearchFightWeb.Controllers
@@ -23,6 +20,7 @@ namespace SearchFightWeb.Controllers
             {
                 _queryService.SearchQueries = new List<string>() { "php", "java 8 help" };
                 var temp = await _queryService.PerformGoogleSearch();
+                var temp2 = await _queryService.PerformBingSearch();
             }
             catch (EmptyQueryException e)
             {
