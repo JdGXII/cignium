@@ -1,4 +1,5 @@
 ﻿using ApiClients.Interfaces;
+using ErrorHandling.Exceptions;
 using Microsoft.AspNetCore.Mvc;
 using Services.Interfaces;
 using System;
@@ -18,8 +19,15 @@ namespace SearchFightWeb.Controllers
 
         public async Task<IActionResult> Index()
         {
-            _queryService.SearchQueries = new List<string>() { "php", "java 8 help" };
-            var temp = await _queryService.PerformGoogleSearch();
+            try
+            {
+                _queryService.SearchQueries = new List<string>() { "php", "java 8 help" };
+                var temp = await _queryService.PerformGoogleSearch();
+            }
+            catch (EmptyQueryException e)
+            {
+                ViewBag.Error = e.Message;
+            }
 
             return View();
         }

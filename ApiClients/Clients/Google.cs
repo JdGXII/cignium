@@ -1,13 +1,12 @@
 ﻿using ApiClients.Interfaces;
 using Models.Responses;
-using System;
 using System.Collections.Generic;
 using System.Net.Http;
-using System.Text;
 using System.Threading.Tasks;
 using Newtonsoft.Json;
 using Microsoft.Extensions.Configuration;
 using Microsoft.AspNetCore.WebUtilities;
+using ErrorHandling.Exceptions;
 
 namespace ApiClients.Clients
 {
@@ -32,6 +31,8 @@ namespace ApiClients.Clients
 
         public async Task<List<GoogleResponse>> GetResults(List<string> queries)
         {
+            if (queries.Count == 0 || queries.Contains(string.Empty) || queries.Contains(" ")) throw new EmptyQueryException();
+
             List<GoogleResponse> responses = new List<GoogleResponse>();            
             foreach (string query in queries)
             {

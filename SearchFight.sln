@@ -3,15 +3,17 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.28803.352
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ApiClients", "ApiClients\ApiClients.csproj", "{B963CA8A-87F2-4EEC-8694-636CE208AACB}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ApiClients", "ApiClients\ApiClients.csproj", "{B963CA8A-87F2-4EEC-8694-636CE208AACB}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Models", "Models\Models.csproj", "{46F0AA15-C1D4-42A6-8A1A-4921E7B12A7D}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Models", "Models\Models.csproj", "{46F0AA15-C1D4-42A6-8A1A-4921E7B12A7D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ModelBuilder", "ModelBuilder\ModelBuilder.csproj", "{D07869B7-AA58-4950-8BBD-13240EDAE74D}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ModelBuilder", "ModelBuilder\ModelBuilder.csproj", "{D07869B7-AA58-4950-8BBD-13240EDAE74D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Services", "Services\Services.csproj", "{CBA6A40E-905A-4BDE-AFD2-7A2053865AFA}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Services", "Services\Services.csproj", "{CBA6A40E-905A-4BDE-AFD2-7A2053865AFA}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SearchFightWeb", "SearchFightWeb\SearchFightWeb.csproj", "{7FDAB49E-D819-4574-BA57-168FD36E65E5}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SearchFightWeb", "SearchFightWeb\SearchFightWeb.csproj", "{7FDAB49E-D819-4574-BA57-168FD36E65E5}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ErrorHandling", "ErrorHandling\ErrorHandling.csproj", "{455F98E6-8CA6-45E3-964D-6FA56A7339D2}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -39,6 +41,10 @@ Global
 		{7FDAB49E-D819-4574-BA57-168FD36E65E5}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{7FDAB49E-D819-4574-BA57-168FD36E65E5}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{7FDAB49E-D819-4574-BA57-168FD36E65E5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{455F98E6-8CA6-45E3-964D-6FA56A7339D2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{455F98E6-8CA6-45E3-964D-6FA56A7339D2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{455F98E6-8CA6-45E3-964D-6FA56A7339D2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{455F98E6-8CA6-45E3-964D-6FA56A7339D2}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
