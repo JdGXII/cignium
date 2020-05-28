@@ -26,6 +26,7 @@ namespace Services.Services
             var results = googleResponses.Select(googleResponse => googleResponse.Queries.Request
                                          .Select(result => new QueryResult
                                          {
+                                             SearchEngineUsed = "Google",
                                              SearchTerm = result.SearchTerms,
                                              TotalResults = result.TotalResults
                                          })
@@ -40,11 +41,13 @@ namespace Services.Services
             var bingResponses = await _bingClient.GetResults(SearchQueries);
 
             var results = bingResponses.Select(bingResponse => new QueryResult
-                                        {
-                                            SearchTerm = bingResponse.QueryContext.OriginalQuery,
-                                            TotalResults = bingResponse.WebPages.TotalEstimatedMatches
-                                        }).ToList();
-
+                                       {
+                                           SearchEngineUsed = "Bing",
+                                           SearchTerm = bingResponse.QueryContext.OriginalQuery,
+                                           TotalResults = bingResponse.WebPages.TotalEstimatedMatches
+                                       })
+                                       .ToList();
+                                       
             return results;
         }
     }

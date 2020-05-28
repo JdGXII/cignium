@@ -1,12 +1,7 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 using ApiClients.Clients;
 using ApiClients.Interfaces;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Services.Interfaces;
@@ -23,6 +18,7 @@ namespace SearchFightWeb
             services.AddHttpClient<IGoogleClient, Google>();
             services.AddHttpClient<IBingClient, Bing>();
             services.AddTransient<ISearchService, SearchService>();
+            services.AddTransient<IComparisonService, ComparisonService>();
             services.AddMvc();
         }
 

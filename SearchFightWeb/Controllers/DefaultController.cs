@@ -8,19 +8,23 @@ namespace SearchFightWeb.Controllers
 {
     public class DefaultController : Controller
     {
-        private ISearchService _queryService;
-        public DefaultController(ISearchService queryService)
+        private ISearchService _searchService;
+        private IComparisonService _comparisonService;
+        public DefaultController(ISearchService queryService, IComparisonService comparisonService)
         {
-            _queryService = queryService;
+            _searchService = queryService;
+            _comparisonService = comparisonService;
         }
 
         public async Task<IActionResult> Index()
         {
             try
             {
-                _queryService.SearchQueries = new List<string>() { "php", "java 8 help" };
-                var temp = await _queryService.PerformGoogleSearch();
-                var temp2 = await _queryService.PerformBingSearch();
+                var searchTerms = new List<string>() { "php", "java 8 help" };
+                _searchService.SearchQueries = searchTerms;
+                var temp = await _searchService.PerformGoogleSearch();
+                var temp2 = await _searchService.PerformBingSearch();
+                var winners = _comparisonService.GetWinners(new List<List<Models.Output.QueryResult>>() { temp, temp2 }, searchTerms);
             }
             catch (EmptyQueryException e)
             {
