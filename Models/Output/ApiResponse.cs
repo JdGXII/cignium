@@ -6,5 +6,6 @@ namespace Models.Output
     {
         public string Message { get; set; }
         public List<QueryResult> Results { get; set; }
+        public List<QueryResult> Winners { get; set; }
     }
 }

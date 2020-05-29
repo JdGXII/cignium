@@ -15,6 +15,11 @@ export class SearchService {
     return this.http.get<ApiResponse>(this.baseUrl + 'api/SearchFightApi/GetWinners', { params })
   }
 
+  getBaseSearchResults(searchTerms: string[]) {
+    let params = this.buildHttpParameters(searchTerms);
+    return this.http.get<ApiResponse>(this.baseUrl + 'api/SearchFightApi/GetBaseSearchResults', { params })
+  }
+
   getAllResults(searchTerms: string[]) {
     let params = this.buildHttpParameters(searchTerms);
     return this.http.get<ApiResponse>(this.baseUrl + 'api/SearchFightApi/GetAllResults', { params })

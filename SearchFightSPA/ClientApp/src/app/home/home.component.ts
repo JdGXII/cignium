@@ -25,7 +25,6 @@ export class HomeComponent {
     if (this.searchTerms) {
       this.searching = true;
       this.getAllResults();
-      this.getWinners();
     }
     else {
       this.error = "Please input search terms";
@@ -34,25 +33,11 @@ export class HomeComponent {
 
   }
 
-  getWinners() {
-    this.searchService.getWinners(this.processTerms()).subscribe(response => {
-      if (response.results) {
-        this.winners = response.results;
-      }
-      else {
-        this.error = response.message;
-      }
-      this.searching = false;
-    },
-      (error => {
-        this.error = "You've sent too many requests to the servers. Wait a while and try again"
-      }));
-  }
-
   getAllResults() {
     this.searchService.getAllResults(this.processTerms()).subscribe(response => {
-      if (response.results) {
+      if (response.results && response.winners) {
         this.queryResults = response.results;
+        this.winners = response.winners;
       }
       else {
         this.error = response.message;

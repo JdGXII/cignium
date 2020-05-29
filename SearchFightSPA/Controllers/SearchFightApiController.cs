@@ -28,9 +28,30 @@ namespace SearchFightSPA.Controllers
                 var googleResults = await _searchService.PerformGoogleSearch();
                 var bingResults = await _searchService.PerformBingSearch();
 
-                var allResults = _comparisonService.GetAllSearchResults(new List<List<QueryResult>>() { googleResults, bingResults }, searchTerms);
+                var allResults = _comparisonService.GetBaseSearchResults(new List<List<QueryResult>>() { googleResults, bingResults }, searchTerms);
+                var winners = _comparisonService.GetWinners(new List<List<QueryResult>>() { googleResults, bingResults }, searchTerms);
 
-                return new ApiResponse { Message = "Succes", Results = allResults }; ;
+                return new ApiResponse { Message = "Succes", Results = allResults, Winners= winners }; ;
+
+            }
+            catch (EmptyQueryException)
+            {
+                return new ApiResponse { Message = "You didn't input any search terms" };
+            }
+        }
+
+        [HttpGet("[action]")]
+        public async Task<ApiResponse> GetBaseSearchResults(List<string> searchTerms)
+        {
+            try
+            {
+                _searchService.SearchQueries = searchTerms;
+                var googleResults = await _searchService.PerformGoogleSearch();
+                var bingResults = await _searchService.PerformBingSearch();
+
+                var baseResults = _comparisonService.GetBaseSearchResults(new List<List<QueryResult>>() { googleResults, bingResults }, searchTerms);                
+
+                return new ApiResponse { Message = "Succes", Results = baseResults }; ;
 
             }
             catch (EmptyQueryException)
@@ -47,9 +68,10 @@ namespace SearchFightSPA.Controllers
                 _searchService.SearchQueries = searchTerms;
                 var googleResults = await _searchService.PerformGoogleSearch();
                 var bingResults = await _searchService.PerformBingSearch();
+
                 var winners = _comparisonService.GetWinners(new List<List<QueryResult>>() { googleResults, bingResults }, searchTerms);
 
-                return new ApiResponse { Message = "Succes", Results = winners }; ;
+                return new ApiResponse { Message = "Succes", Winners = winners }; ;
             }
             catch (EmptyQueryException)
             {

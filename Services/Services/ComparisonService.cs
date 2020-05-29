@@ -24,7 +24,7 @@ namespace Services.Services
             return winners;
         }
 
-        public List<QueryResult> GetAllSearchResults(List<List<QueryResult>> queryResults, List<string> queries)
+        public List<QueryResult> GetBaseSearchResults(List<List<QueryResult>> queryResults, List<string> queries)
         {
             return queryResults.SelectMany(resultList => resultList, (resultList, queryResult) => queryResult).ToList();
         }
