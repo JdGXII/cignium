@@ -13,7 +13,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Services", "Services\Servic
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SearchFightWeb", "SearchFightWeb\SearchFightWeb.csproj", "{7FDAB49E-D819-4574-BA57-168FD36E65E5}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ErrorHandling", "ErrorHandling\ErrorHandling.csproj", "{455F98E6-8CA6-45E3-964D-6FA56A7339D2}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ErrorHandling", "ErrorHandling\ErrorHandling.csproj", "{455F98E6-8CA6-45E3-964D-6FA56A7339D2}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SearchFightSPA", "SearchFightSPA\SearchFightSPA.csproj", "{37420E59-11C1-4098-888F-9A05F7A84296}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -45,6 +47,10 @@ Global
 		{455F98E6-8CA6-45E3-964D-6FA56A7339D2}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{455F98E6-8CA6-45E3-964D-6FA56A7339D2}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{455F98E6-8CA6-45E3-964D-6FA56A7339D2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{37420E59-11C1-4098-888F-9A05F7A84296}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{37420E59-11C1-4098-888F-9A05F7A84296}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{37420E59-11C1-4098-888F-9A05F7A84296}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{37420E59-11C1-4098-888F-9A05F7A84296}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
