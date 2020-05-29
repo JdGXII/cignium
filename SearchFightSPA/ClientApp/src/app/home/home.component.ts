@@ -1,7 +1,7 @@
-import { Component, Inject } from '@angular/core';
-import { HttpClient, HttpParams } from '@angular/common/http';
+import { Component } from '@angular/core';
+import { HttpParams } from '@angular/common/http';
 import { QueryResult } from './interfaces/queryResult';
-import { ApiResponse } from './interfaces/apiResponse';
+import { SearchService } from '../services/search.service';
 
 @Component({
   selector: 'app-home',
@@ -14,9 +14,7 @@ export class HomeComponent {
   public searching: boolean;
   public error: string;
 
-  constructor(public http: HttpClient, @Inject('BASE_URL') public baseUrl: string) {
-
-  }
+  constructor(public searchService: SearchService) {}
 
   performSearch() {
     this.queryResults = undefined;
@@ -37,8 +35,7 @@ export class HomeComponent {
   }
 
   getWinners() {
-    let params = this.buildHttpParameters();
-    this.http.get<ApiResponse>(this.baseUrl + 'api/SearchFightApi/GetWinners', { params }).subscribe(response => {
+    this.searchService.getWinners(this.processTerms()).subscribe(response => {
       if (response.results) {
         this.winners = response.results;
       }
@@ -53,8 +50,7 @@ export class HomeComponent {
   }
 
   getAllResults() {
-    let params = this.buildHttpParameters();
-    this.http.get<ApiResponse>(this.baseUrl + 'api/SearchFightApi/GetAllResults', { params }).subscribe(response => {
+    this.searchService.getAllResults(this.processTerms()).subscribe(response => {
       if (response.results) {
         this.queryResults = response.results;
       }
