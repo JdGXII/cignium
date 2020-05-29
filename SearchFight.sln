@@ -7,8 +7,6 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ApiClients", "ApiClients\Ap
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Models", "Models\Models.csproj", "{46F0AA15-C1D4-42A6-8A1A-4921E7B12A7D}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ModelBuilder", "ModelBuilder\ModelBuilder.csproj", "{D07869B7-AA58-4950-8BBD-13240EDAE74D}"
-EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Services", "Services\Services.csproj", "{CBA6A40E-905A-4BDE-AFD2-7A2053865AFA}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ErrorHandling", "ErrorHandling\ErrorHandling.csproj", "{455F98E6-8CA6-45E3-964D-6FA56A7339D2}"
@@ -29,10 +27,6 @@ Global
 		{46F0AA15-C1D4-42A6-8A1A-4921E7B12A7D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{46F0AA15-C1D4-42A6-8A1A-4921E7B12A7D}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{46F0AA15-C1D4-42A6-8A1A-4921E7B12A7D}.Release|Any CPU.Build.0 = Release|Any CPU
-		{D07869B7-AA58-4950-8BBD-13240EDAE74D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{D07869B7-AA58-4950-8BBD-13240EDAE74D}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{D07869B7-AA58-4950-8BBD-13240EDAE74D}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{D07869B7-AA58-4950-8BBD-13240EDAE74D}.Release|Any CPU.Build.0 = Release|Any CPU
 		{CBA6A40E-905A-4BDE-AFD2-7A2053865AFA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{CBA6A40E-905A-4BDE-AFD2-7A2053865AFA}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{CBA6A40E-905A-4BDE-AFD2-7A2053865AFA}.Release|Any CPU.ActiveCfg = Release|Any CPU

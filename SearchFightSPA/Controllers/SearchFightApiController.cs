@@ -7,12 +7,12 @@ using Services.Interfaces;
 namespace SearchFightSPA.Controllers
 {
     [Route("api/[controller]")]
-    public class SampleDataController : Controller
+    public class SearchFightApiController : Controller
     {
         private ISearchService _searchService;
         private IComparisonService _comparisonService;
 
-        public SampleDataController(ISearchService searchService, IComparisonService comparisonService )
+        public SearchFightApiController(ISearchService searchService, IComparisonService comparisonService )
         {
             _searchService = searchService;
             _comparisonService = comparisonService;
@@ -24,9 +24,10 @@ namespace SearchFightSPA.Controllers
             _searchService.SearchQueries = searchTerms;
             var googleResults = await _searchService.PerformGoogleSearch();
             var bingResults = await _searchService.PerformBingSearch();
-            var winners = _comparisonService.GetAllSearchResults(new List<List<QueryResult>>() { googleResults, bingResults }, searchTerms);
 
-            return winners;
+            var allResults = _comparisonService.GetAllSearchResults(new List<List<QueryResult>>() { googleResults, bingResults }, searchTerms);
+
+            return allResults;
         }
 
         [HttpGet("[action]")]

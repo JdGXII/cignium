@@ -17,17 +17,20 @@ export class HomeComponent {
   }
 
   performSearch() {
+    this.queryResults = undefined;
+    this.winners = undefined;
+
     let params = this.buildHttpParameters();
     this.searching = true;
-    this.http.get<QueryResult[]>(this.baseUrl + 'api/SampleData/GetWinners', { params }).subscribe(result => {
+    this.http.get<QueryResult[]>(this.baseUrl + 'api/SearchFightApi/GetWinners', { params }).subscribe(result => {
       this.winners = result;
       this.searching = false;
-    }, error => console.error(error));
+    }, error => alert("You've sent too many requests to the servers. Wait a while and try again"));
 
-    this.http.get<QueryResult[]>(this.baseUrl + 'api/SampleData/GetAllResults', { params }).subscribe(result => {
+    this.http.get<QueryResult[]>(this.baseUrl + 'api/SearchFightApi/GetAllResults', { params }).subscribe(result => {
       this.queryResults = result;
       this.searching = false;
-    }, error => console.error(error));
+    }, error => alert("You've sent too many requests to the servers. Wait a while and try again"));
   }
 
   buildHttpParameters() {
