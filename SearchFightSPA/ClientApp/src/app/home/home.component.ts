@@ -45,7 +45,8 @@ export class HomeComponent {
       this.searching = false;
     },
       (error => {
-        this.error = "You've sent too many requests to the servers. Wait a while and try again"
+        this.error = "You've sent too many requests to the servers. Wait a while and try again";
+        this.searching = false;
       }));
   }
 
