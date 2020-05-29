@@ -1,10 +1,17 @@
 <h1>Search Fight</h1>
 
-<p>This app makes search engines fight! That's right, just input a search term in the box below and we'll see
+<p>
+  This app makes search engines fight! That's right, just input a search term in the box below and we'll see
   which search engine returns the most results. If you want to search multiple terms at the same time,
-  just separate them with a comma.</p>
+  just separate them with a comma.
+</p>
 
-<input type="text" [(ngModel)]="searchTerms" /> <button (click)="performSearch()">Search</button>
+<input type="text" [(ngModel)]="searchTerms" />
+<button (click)="performSearch()">Search</button>
+
+<div *ngIf="error" class="panel panel-default">
+  <div class="panel-body" style="color:red;">{{error}}</div>
+</div>
 
 <p *ngIf="searching"><em>Loading...</em></p>
 

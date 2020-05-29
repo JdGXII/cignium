@@ -1,6 +1,7 @@
 import { Component, Inject } from '@angular/core';
 import { HttpClient, HttpParams } from '@angular/common/http';
 import { QueryResult } from './interfaces/queryResult';
+import { ApiResponse } from './interfaces/apiResponse';
 
 @Component({
   selector: 'app-home',
@@ -11,6 +12,7 @@ export class HomeComponent {
   public winners: QueryResult[];
   public searchTerms: string;
   public searching: boolean;
+  public error: string;
 
   constructor(public http: HttpClient, @Inject('BASE_URL') public baseUrl: string) {
 
@@ -19,18 +21,51 @@ export class HomeComponent {
   performSearch() {
     this.queryResults = undefined;
     this.winners = undefined;
+    this.error = undefined;
+    
 
+    if (this.searchTerms) {
+      this.searching = true;
+      this.getAllResults();
+      this.getWinners();
+    }
+    else {
+      this.error = "Please input search terms";
+      this.searching = false;
+    }
+
+  }
+
+  getWinners() {
     let params = this.buildHttpParameters();
-    this.searching = true;
-    this.http.get<QueryResult[]>(this.baseUrl + 'api/SearchFightApi/GetWinners', { params }).subscribe(result => {
-      this.winners = result;
+    this.http.get<ApiResponse>(this.baseUrl + 'api/SearchFightApi/GetWinners', { params }).subscribe(response => {
+      if (response.results) {
+        this.winners = response.results;
+      }
+      else {
+        this.error = response.message;
+      }
       this.searching = false;
-    }, error => alert("You've sent too many requests to the servers. Wait a while and try again"));
+    },
+      (error => {
+        this.error = "You've sent too many requests to the servers. Wait a while and try again"
+      }));
+  }
 
-    this.http.get<QueryResult[]>(this.baseUrl + 'api/SearchFightApi/GetAllResults', { params }).subscribe(result => {
-      this.queryResults = result;
+  getAllResults() {
+    let params = this.buildHttpParameters();
+    this.http.get<ApiResponse>(this.baseUrl + 'api/SearchFightApi/GetAllResults', { params }).subscribe(response => {
+      if (response.results) {
+        this.queryResults = response.results;
+      }
+      else {
+        this.error = response.message;
+      }
       this.searching = false;
-    }, error => alert("You've sent too many requests to the servers. Wait a while and try again"));
+    },
+      (error => {
+        this.error = "You've sent too many requests to the servers. Wait a while and try again"
+      }));
   }
 
   buildHttpParameters() {

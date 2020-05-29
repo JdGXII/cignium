@@ -25,6 +25,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <None Remove="ClientApp\src\app\home\interfaces\apiResponse.ts" />
     <None Remove="ClientApp\src\app\home\interfaces\queryResult.ts" />
   </ItemGroup>
 
@@ -35,6 +36,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <TypeScriptCompile Include="ClientApp\src\app\home\interfaces\apiResponse.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\home\interfaces\queryResult.ts" />
   </ItemGroup>
 
